@@ -31,8 +31,8 @@ WORKDIR /opt/code
 
 RUN mkdir -p /opt/code/db
 # Add postgres setup
-ADD ./docker/db/postgres-setup.sh /opt/code/db/
-RUN  /opt/code/db/postgres-setup.sh
+ADD docker/db/postgres-setup.sh /opt/code/db/
+RUN /bin/bash /opt/code/db/postgres-setup.sh
 
 ## Install our code to prepare the DB
 ADD ./ThoughtsBackend/requirements.txt /opt/code
@@ -45,7 +45,7 @@ ADD ./ThoughtsBackend/ /opt/code/
 ADD ./docker/db/* /opt/code/db/
 
 ## get the db ready
-RUN /opt/code/db/prepare_db.sh
+RUN /bin/bash /opt/code/db/prepare_db.sh
 
 # Start the database in normal operation
 USER postgres

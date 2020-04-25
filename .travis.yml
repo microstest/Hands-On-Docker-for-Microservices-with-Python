@@ -48,3 +48,4 @@ jobs:
       script: docker push microstest/thoughts-backend:$TRAVIS_TAG
       on:
         tags: true
+
